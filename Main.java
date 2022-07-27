@@ -32,7 +32,7 @@ class Player
 
 
 
-public class Computer extends Player{
+class Computer extends Player{
 
     public Computer(String player, char piece) {
         super(player, piece);
@@ -130,18 +130,15 @@ class Board {
         int _col = 0;
 
         //get starting point
-        System.out.println("Before i: "+i+" j: "+j+" pieces"+piece);
         while(i<5 && j<6){
 
             j++;
             i++;
 
         }
-        System.out.println("after i: "+i+" j: "+j);
-
+      //check diagonal
         while(i>=0 && j>=0) {
-
-
+            
             _row = this.row[i];
             _col = this.col[j];
             if (board[_row][_col] == piece) {
@@ -155,7 +152,6 @@ class Board {
             }
             i--;
             j--;
-
 
         }
 
@@ -206,10 +202,11 @@ class Board {
 
             if(board[_row][_col]==piece){
                 count++;
-                System.out.println("row"+_row+" col" +_col+" count "+count);
+              
                 if (count==4 ){
                     break;
                 }
+                
             }else{
                 count=0;
             }
@@ -244,7 +241,7 @@ class Board {
 class ConnectFour {
     Scanner sc = new Scanner(System.in);
     void start(){
-        Player player1 = new Player("1",'O');
+        Player player1 = new Player("Player 1",'O');
         Computer comp = new Computer("Computer",'X');
         Board board = new Board();
         boolean playerTurn =true;
@@ -270,8 +267,6 @@ class ConnectFour {
                board.addPiece(comp.generateMove(), comp.getPiece());
                playerTurn=true;
            }
-
-
 
         }
         board.printBoard();
